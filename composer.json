@@ -1,0 +1,12 @@
+{
+  "name":"kbarter/hello",
+  "authors": [
+    {
+      "name":"Kevan Barter",
+      "email":"Kbarter@mail.greenriver.edu"
+    }
+  ],
+  "require":{
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
