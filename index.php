@@ -1,12 +1,17 @@
 <?php
 
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Index Page</title>
-</head>
-<body>
+//require the autoload file
+require_once ('vendor/autoload.php');
 
-</body>
-</html>
+//create an instance of the base class
+$f3 = Base::instance();
+
+//Define a default route
+$f3->route('GET /', function() {
+    $view = new View();
+    echo $view ->render("pages/home.html");
+});
+
+//Run Fat-Free
+$f3->run();
+
