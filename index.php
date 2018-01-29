@@ -12,7 +12,7 @@ $f3->route('GET /', function() {
     echo $view ->render("pages/home.html");
 });
 
-$f3->route('GET /persInfo', function() {
+$f3->route('GET /info', function() {
     $view = new Template();
     echo $view ->render("pages/personalInfo.html");
 });
