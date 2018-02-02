@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Personal Info</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
 </head>
@@ -10,39 +10,60 @@
     <a class="navbar-brand" href="./home">Last Chance Dating Site</a>
 </nav><br>
 <div class="container" id="container">
-    <form method="post" action="./profile" id="info">
+    <h1>Profile</h1>
+    <hr>
+    <form method="post" action="./interests" id="info">
         <div class="row  mt-4 ml-5">
-            <h1>Profile</h1><br>
-            <hr>
         </div>
         <div class="row  mt-4 ml-5">
-            <div class="col-lg-8">
+            <div class="col-lg-6">
                 <label>
                     <strong>Email</strong> <br>
                 </label>
-                <input type="text" name="Email"><br>
+                <check if="{{ @errors['email'] }}">
+                    <p class="text-danger">{{ @errors['email'] }}</p>
+                </check>
+                <input type="email" name="email" value="{{ @email }}" class="form-control"><br>
                 <label>
                     <strong>State</strong> <br>
                 </label>
-                <input type="text" name="State"><br>
+                <check if="{{ @errors['states'] }}">
+                    <p class="text-danger">{{ @errors['states'] }}</p>
+                </check>
+                <select class="form-control" name="mystate">
+                    <option>--Select--</option>
+                    <repeat group="{{ @states }}" value="{{ @state }}">
+                        <option
+                            <check if="{{ @state==@mystate }}">selected</check>>
+                            {{ @state }}
+                        </option>
+                    </repeat>
+                </select><br>
                 <label>
                     <strong>Seeking</strong>
                 </label><br>
-                <input type="radio" name="seeking" value="male"> &emsp; Male
+                <check if="{{ @errors['seeking'] }}">
+                    <p class="text-danger">{{ @errors['seeking'] }}</p>
+                </check>
+                <input type="radio" name="seeking" value="Male"
+                <check if="{{ @seeking==Male }}">checked</check>> &emsp; Male
                 &emsp;
-                <input type="radio" name="seeking" value="female"> &emsp; Female
+                <input type="radio" name="seeking" value="Female"
+                <check if="{{ @seeking==Female }}">checked</check>> &emsp; Female
             </div>
-            <div class="col-lg-4 p-3">
-                <div class="" id="notes">
-                    <label><strong>Biography</strong> </label><br>
-                    <input type="text" name="biography">
-                </div>
+            <div class="col-lg-6">
+                <label><strong>Biography</strong> </label><br>
+                <check if="{{ @errors['biography'] }}">
+                    <p class="text-danger">{{ @errors['biography'] }}</p>
+                </check>
+                <textarea class="" id="biography" name="biography" value="{{ @biography }}"
+                          cols="65" rows="5">{{ @biography }}</textarea>
             </div>
         </div>
         <div class="row  mt-4 ml-5">
 
-            <div class="col-lg-12 text-right">
-                <button type="button" class="btn btn-primary">Next</button>
+            <div class="col-lg-12 text-right" id="profileButton">
+                <button type="submit" name="submit" class="btn btn-primary">Next></button>
             </div>
         </div>
     </form>

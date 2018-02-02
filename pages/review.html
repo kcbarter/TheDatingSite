@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>Review</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+<body>
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded" id="navbar">
+    <a class="navbar-brand" href="./home">Last Chance Dating Site</a>
+</nav><br>
+<div class="container" id="container">
+    <div class="row  mt-4 ml-5">
+        <div class="col-lg-4">
+            <table class="table table-border" id="summary">
+                <tr>
+                    <td>Name: {{ @FirstName }} {{ @LastName }}</td>
+                </tr>
+                <tr>
+                    <td>Gender: {{ @gender }}</td>
+                </tr>
+                <tr>
+                    <td>Age: {{ @Age }}</td>
+                </tr>
+                <tr>
+                    <td>Phone: {{ @Phone }}</td>
+                </tr>
+                <tr>
+                    <td>Email: {{ @email }}</td>
+                </tr>
+                <tr>
+                    <td>State: {{ @states }}</td>
+                </tr>
+                <tr>
+                    <td>Seeking: {{ @seeking }}</td>
+                </tr>
+                <tr>
+                    <td>Interests:
+                        <repeat group="{{ @indoorAct }}" value="{{ @indoor }} ">
+                            {{ @indoor }}
+                        </repeat>
+                        <repeat group="{{ @outdoorAct }} " value="{{ @outdoor }}">
+                            {{ @outdoor }}
+                        </repeat>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-lg-6 p-5">
+            <img src="images/datingWebsite.jpg" class="img-fluid rounded mx-auto d-block"
+                 alt="dating" id="dating"><br>
+            <h2>Biography</h2>
+            <p>{{ @biography }}</p>
+        </div>
+    </div>
+    <div class="row  mt-4 ml-5">
+
+        <div class="col-lg-12 text-center" id="profileButton">
+            <button type="submit" name="" class="btn btn-primary">Contact Me</button>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</body>
+</html>

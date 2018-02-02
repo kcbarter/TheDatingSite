@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Interests</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+<body>
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded" id="navbar">
+    <a class="navbar-brand" href="./home">Last Chance Dating Site</a>
+</nav><br>
+<div class="container" id="container">
+    <h1>Interests</h1><br>
+    <hr>
+    <form method="post" action="./display" id="info">
+        <div class="row  mt-4 ml-5">
+        </div>
+        <div class="row  mt-4 ml-5">
+            <div class="col-lg-12">
+                <label>
+                    <strong>In-door Activities</strong> <br>
+                </label> <br>
+                <check if="{{ @errors['indoor'] }}">
+                    <p class="text-danger">{{ @errors['indoor'] }}</p>
+                </check>
+                <repeat group="{{ @indoor }} " value="{{ @indoors }}">
+                    <input type="checkbox" name="indoorAct[]"
+                           value="{{ @indoors }}"
+                    <check if="{{!empty(@indoorAct) && in_array(@indoors, @indoorAct)
+                    }}">checked</check>>
+                        {{ @indoors }} &emsp;
+                </repeat><br><br>
+                <label>
+                    <strong>Out-door Activities</strong>
+                </label> <br>
+                <check if="{{ @errors['outdoor'] }}">
+                    <p class="text-danger">{{ @errors['outdoor'] }}</p>
+                </check>
+                <repeat group="{{ @outdoor }} " value="{{ @outdoors }}">
+                    <input type="checkbox" name="outdoorAct[]"
+                           value="{{ @outdoors }}"
+                    <check if="{{!empty(@outdoorAct) && in_array(@outdoors, @outdoorAct)
+                    }}">checked</check>>
+                    {{ @outdoors }} &emsp; &emsp;
+                </repeat>
+            </div>
+        </div>
+        <div class="row  mt-4 ml-5">
+
+            <div class="col-lg-12 text-right" id="profileButton">
+                <button type="submit" name="submit" class="btn btn-primary">Next></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</body>
+</html>

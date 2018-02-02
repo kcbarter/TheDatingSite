@@ -23,3 +23,22 @@ input[type=text] {
 #navbar {
     background-color: lightgray;
 }
+
+#profileButton {
+    padding-right: 30px;
+}
+
+#summary {
+    width: 100%;
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 1px;
+    text-size: 20px;
+}
+
+tr td {
+    border-bottom: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
