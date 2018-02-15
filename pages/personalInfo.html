@@ -56,7 +56,12 @@
                 <check if="{{ @errors['Phone'] }}">
                     <p class="text-danger">{{ @errors['Phone'] }}</p>
                 </check>
-                <input type="text" name="Phone" value="{{ @Phone }}" class="form-control">
+                <input type="text" name="Phone" value="{{ @Phone }}" class="form-control"><br>
+                <label>
+                    <strong>Premium Member</strong>
+                </label><br>
+                <input type="checkbox" name="member" value="preMember">
+                Sign me up for a Premium Account
             </div>
             <div class="col-lg-4 p-3">
                 <div class="" id="notes">

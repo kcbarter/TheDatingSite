@@ -13,35 +13,40 @@
         <div class="col-lg-4">
             <table class="table table-border" id="summary">
                 <tr>
-                    <td>Name: {{ @FirstName }} {{ @LastName }}</td>
+                    <td>Name: {{ @SESSION['member']->getFname() }}
+                        c{{ @SESSION['member']->getLname() }}</td>
                 </tr>
                 <tr>
-                    <td>Gender: {{ @gender }}</td>
+                    <td>Gender: {{ @SESSION['member']->getGender() }}</td>
                 </tr>
                 <tr>
-                    <td>Age: {{ @Age }}</td>
+                    <td>Age: {{ @SESSION['member']->getAge() }}</td>
                 </tr>
                 <tr>
-                    <td>Phone: {{ @Phone }}</td>
+                    <td>Phone: {{ @SESSION['member']->getPhone() }}</td>
                 </tr>
                 <tr>
-                    <td>Email: {{ @email }}</td>
+                    <td>Email: {{ @SESSION['member']->getEmail() }}</td>
                 </tr>
                 <tr>
-                    <td>State: {{ @states }}</td>
+                    <td>State: {{ @SESSION['member']->getState() }}</td>
                 </tr>
                 <tr>
-                    <td>Seeking: {{ @seeking }}</td>
+                    <td>Seeking: {{ @SESSION['member']->getSeeking() }}</td>
                 </tr>
                 <tr>
-                    <td>Interests:
-                        <repeat group="{{ @indoorAct }}" value="{{ @indoor }} ">
-                            {{ @indoor }}
-                        </repeat>
-                        <repeat group="{{ @outdoorAct }} " value="{{ @outdoor }}">
-                            {{ @outdoor }}
-                        </repeat>
-                    </td>
+                    <check if="{{ is_a(@SESSION['member'], 'PremiumMember') }}">
+                        <td>Interests:
+                            <repeat group="{{ @SESSION['member']->getInDoorInterests() }}"
+                                    value="{{ @indoor }} ">
+                                {{ @indoor }}
+                            </repeat>
+                            <repeat group="{{ @SESSION['member']->getOutDoorInterest() }} "
+                                    value="{{ @outdoor }}">
+                                {{ @outdoor }}
+                            </repeat>
+                        </td>
+                    </check>
                 </tr>
             </table>
         </div>
@@ -49,7 +54,7 @@
             <img src="images/datingWebsite.jpg" class="img-fluid rounded mx-auto d-block"
                  alt="dating" id="dating"><br>
             <h2>Biography</h2>
-            <p>{{ @biography }}</p>
+            <p>{{ @SESSION['member']->getBio() }}</p>
         </div>
     </div>
     <div class="row  mt-4 ml-5">
