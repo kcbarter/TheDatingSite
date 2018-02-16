@@ -1,5 +1,11 @@
 <?php
 
+    /**
+     * Class PremiumMember
+     * This class represents a premium member if the user clicked the checkbox for premium
+     * member.
+     * @author Kevan Barter
+     */
     class PremiumMember extends Member {
         private $_inDoorInterests;
         private $_outDoorInterest;
@@ -10,6 +16,7 @@
         }
 
         /**
+         * Getter for inDoorInterests
          * @return mixed
          */
         public function getInDoorInterests()
@@ -18,6 +25,7 @@
         }
 
         /**
+         * Setter for inDoorInterests
          * @param mixed $inDoorInterests
          */
         public function setInDoorInterests($inDoorInterests)
@@ -26,6 +34,7 @@
         }
 
         /**
+         * Getter for outDoorInterest
          * @return mixed
          */
         public function getOutDoorInterest()
@@ -34,6 +43,7 @@
         }
 
         /**
+         * Setter for outDoorInterest
          * @param mixed $outDoorInterest
          */
         public function setOutDoorInterest($outDoorInterest)
