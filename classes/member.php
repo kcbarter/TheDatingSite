@@ -1,5 +1,11 @@
 <?php
 
+    /**
+     * Class Member
+     * The class represents a regular member who did not click the Premium Member
+     * check box when creating an account.
+     * @author Kevan Barter
+     */
     class Member {
         protected $fname;
         protected $lname;
@@ -11,6 +17,14 @@
         protected $seeking;
         protected $bio;
 
+        /**
+         * Member constructor.
+         * @param $fname
+         * @param $lname
+         * @param $age
+         * @param $gender
+         * @param $phone
+         */
         function __construct($fname, $lname, $age, $gender, $phone)
         {
             $this->fname = $fname;
@@ -21,6 +35,7 @@
         }
 
         /**
+         * Getter for fname
          * @return mixed
          */
         public function getFname()
@@ -29,6 +44,7 @@
         }
 
         /**
+         * Setter for fname
          * @param mixed $fname
          */
         public function setFname($fname)
@@ -37,6 +53,7 @@
         }
 
         /**
+         * Getter for lname
          * @return mixed
          */
         public function getLname()
@@ -45,6 +62,7 @@
         }
 
         /**
+         * Setter for lname
          * @param mixed $lname
          */
         public function setLname($lname)
@@ -53,6 +71,7 @@
         }
 
         /**
+         * Getter age
          * @return mixed
          */
         public function getAge()
@@ -61,6 +80,7 @@
         }
 
         /**
+         * Setter age
          * @param mixed $age
          */
         public function setAge($age)
@@ -69,6 +89,7 @@
         }
 
         /**
+         * Getter for gender
          * @return mixed
          */
         public function getGender()
@@ -77,6 +98,7 @@
         }
 
         /**
+         * Setter for gender
          * @param mixed $gender
          */
         public function setGender($gender)
@@ -85,6 +107,7 @@
         }
 
         /**
+         * Getter for phone
          * @return mixed
          */
         public function getPhone()
@@ -93,6 +116,7 @@
         }
 
         /**
+         * Setter for phone
          * @param mixed $phone
          */
         public function setPhone($phone)
@@ -101,6 +125,7 @@
         }
 
         /**
+         * Getter for email
          * @return mixed
          */
         public function getEmail()
@@ -109,6 +134,7 @@
         }
 
         /**
+         * Setter for email
          * @param mixed $email
          */
         public function setEmail($email)
@@ -117,6 +143,7 @@
         }
 
         /**
+         * Getter for state
          * @return mixed
          */
         public function getState()
@@ -125,6 +152,7 @@
         }
 
         /**
+         * Setter for state
          * @param mixed $state
          */
         public function setState($state)
@@ -133,6 +161,7 @@
         }
 
         /**
+         * Getter for seeking
          * @return mixed
          */
         public function getSeeking()
@@ -141,6 +170,7 @@
         }
 
         /**
+         * Setter for seeking
          * @param mixed $seeking
          */
         public function setSeeking($seeking)
@@ -149,6 +179,7 @@
         }
 
         /**
+         * Getter for bio
          * @return mixed
          */
         public function getBio()
@@ -157,6 +188,7 @@
         }
 
         /**
+         * Setter for bio
          * @param mixed $bio
          */
         public function setBio($bio)
