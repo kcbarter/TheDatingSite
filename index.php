@@ -65,7 +65,6 @@ $f3->route('GET|POST /profile', function ($f3){
                     $Age, $Gender, $Phone);
                 $_SESSION['member'] = $member;
             }
-            print_r($_SESSION);
 
             $view = new Template();
             echo $view ->render("pages/profile.html");
@@ -125,8 +124,6 @@ $f3->route('GET|POST /interests', function ($f3){
 
                 $_SESSION['member'] = $mem;
 
-                print_r($_SESSION);
-
                 $view = new Template();
                 echo $view ->render('pages/review.html');
             }
@@ -168,8 +165,6 @@ $f3->route('GET|POST /display', function($f3) {
             $interests->setOutDoorInterest($outdoorAct);
 
             $_SESSION['member'] = $interests;
-
-            print_r($_SESSION);
 
             $view = new Template();
             echo $view ->render('pages/review.html');
