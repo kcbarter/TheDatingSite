@@ -6,7 +6,8 @@
      * check box when creating an account.
      * @author Kevan Barter
      */
-    class Member {
+
+    class Member extends DataObject {
         protected $fname;
         protected $lname;
         protected $age;
@@ -194,5 +195,64 @@
         public function setBio($bio)
         {
             $this->bio = $bio;
+        }
+
+        public static function getMembers()
+        {
+            $conn = parent::connect();
+
+            //define query
+            $sql = "SELECT * FROM LCDating ORDER  BY lname, fname, member_id";
+
+            //prepare a statement
+            $statement = $conn->prepare($sql);
+
+            //bind parameters
+            //no parameters to bind
+
+            //execute
+            $statement->execute();
+
+            //fetch results
+            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            //return any values if applicable
+            return $results;
+        }
+
+        function addMember($fname, $lname, $age, $gender, $phone, $email, $state,
+                $seeking, $bio)
+        {
+            global $dbh;
+            $interests = '';
+            $image = '';
+
+            //define query
+            $sql = "INSERT INTO LCDating
+                  VALUES (:fname, :lname, :age, :gender, :phone, :email,
+                  :state, :seeking, :bio, :image, :interests)";
+
+
+            //prepare statement
+            $statement = $dbh->prepare($sql);
+
+            //bind parameter
+            $statement->bindParam(':fname', $fname, PDO::PARAM_STR);
+            $statement->bindParam(':lname', $lname, PDO::PARAM_STR);
+            $statement->bindParam(':age', $age, PDO::PARAM_STR);
+            $statement->bindParam(':gender', $gender, PDO::PARAM_STR);
+            $statement->bindParam(':phone', $phone, PDO::PARAM_STR);
+            $statement->bindParam(':email', $email, PDO::PARAM_STR);
+            $statement->bindParam(':state', $state, PDO::PARAM_STR);
+            $statement->bindParam(':seeking', $seeking, PDO::PARAM_STR);
+            $statement->bindParam(':bio', $bio, PDO::PARAM_STR);
+            $statement->bindParam(':image', $image, PDO::PARAM_STR);
+            $statement->bindParam(':interests',$interests, PDO::PARAM_STR);
+
+            //execute statement
+            $success = $statement->execute();
+
+            //return the result
+            return $success;
         }
     }
