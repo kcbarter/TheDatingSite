@@ -23,7 +23,10 @@ $f3->route('GET /info', function() {
     echo $view ->render("pages/personalInfo.html");
 });
 
-
+$f3->route('GET /admin', function (){
+    $view = new Template();
+    echo $view ->render("pages/admin.html");
+});
 
 $f3->route('GET|POST /profile', function ($f3){
     if(isset($_POST['submit']))
@@ -122,6 +125,10 @@ $f3->route('GET|POST /interests', function ($f3){
                 $mem->setSeeking($seeking);
                 $mem->setBio($biography);
 
+                $mem->addMember($mem->getFname(), $mem->getLname(), $mem->getAge(),
+                    $mem->getGender(), $mem->getPhone(), $mem->getEmail(), $mem->getState(),
+                    $mem->getSeeking(), $mem->getBio());
+
                 $_SESSION['member'] = $mem;
 
                 $view = new Template();
@@ -163,6 +170,12 @@ $f3->route('GET|POST /display', function($f3) {
 
             $interests->setInDoorInterests($indoorAct);
             $interests->setOutDoorInterest($outdoorAct);
+
+            $interests->addPreMember($interests->getFname(), $interests->getLname(),
+                $interests->getAge(), $interests->getGender(), $interests->getPhone(),
+                $interests->getEmail(), $interests->getState(), $interests->getSeeking(),
+                $interests->getBio(), $interests->getInDoorInterests(),
+                $interests->getOutDoorInterest());
 
             $_SESSION['member'] = $interests;
 

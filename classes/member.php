@@ -86,6 +86,13 @@
          */
         public function setAge($age)
         {
+            //validation to check if age is numeric and if not sets age
+            //to NULL
+            if(!is_numeric($age))
+            {
+                $this->age = "NULL";
+            }
+
             $this->age = $age;
         }
 
@@ -122,6 +129,12 @@
          */
         public function setPhone($phone)
         {
+            //validation to check if age is numeric and if not sets phone
+            //to NULL
+            if(!is_numeric($phone))
+            {
+                $this->phone = "NULL";
+            }
             $this->phone = $phone;
         }
 
@@ -199,7 +212,8 @@
 
         public static function getMembers()
         {
-            $conn = parent::connect();
+            $dataObject = new DataObject();
+            $conn = $dataObject->connect();
 
             //define query
             $sql = "SELECT * FROM LCDating ORDER  BY lname, fname, member_id";
@@ -223,15 +237,15 @@
         function addMember($fname, $lname, $age, $gender, $phone, $email, $state,
                 $seeking, $bio)
         {
-            global $dbh;
+            $dbh = parent::connect();
             $interests = '';
             $image = '';
 
             //define query
-            $sql = "INSERT INTO LCDating
-                  VALUES (:fname, :lname, :age, :gender, :phone, :email,
-                  :state, :seeking, :bio, :image, :interests)";
+            $sql = "INSERT INTO LCDating (fname, lname, age, gender, phone, email, state, seeking, bio, premium, image, interests)
+                  VALUES (:fname, :lname, :age, :gender, :phone, :email, :state, :seeking, :bio, 1, :image, :interests)";
 
+            echo $sql;
 
             //prepare statement
             $statement = $dbh->prepare($sql);

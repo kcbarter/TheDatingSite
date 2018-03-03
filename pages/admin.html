@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Review</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+<body>
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded" id="navbar">
+    <div>
+        <a class="navbar-brand" href="./home">Last Chance Dating Site</a>
+        <a class="navbar-brand" href="./admin">Admin</a>
+    </div>
+</nav><br>
+<h1>My Dating Site</h1><br>
+<h2>Membership</h2><br>
+    <table id="adminTable">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>State</th>
+            <th>Gender</th>
+            <th>Seeking</th>
+            <th>Premium</th>
+            <th>Interests</th>
+        </tr>
+
+        <repeat group="{{ Member::getMembers() }}" value="{{ @member }}">
+            <tr>
+                <td>{{ @member['member_id'] }}</td>
+                <td>{{ @member['fname'] }} {{ @member['lname'] }}</td>
+                <td>{{ @member['age'] }}</td>
+                <td>{{ @member['phone'] }}</td>
+                <td>{{ @member['email'] }}</td>
+                <td>{{ @member['state'] }}</td>
+                <td>{{ @member['gender'] }}</td>
+                <td>{{ @member['seeking'] }}</td>
+                <check if="{{ @member['premium'] == 1 }}">
+                    <true>
+                        <td>
+                            <input type="checkbox">
+                        </td>
+                        <td>
+
+                        </td>
+                    </true>
+                    <false>
+                        <td>
+                            <input type="checkbox" checked>
+                        </td>
+                        <td>
+                            {{ @member['interests']}}
+                        </td>
+                    </false>
+                </check>
+            </tr>
+        </repeat>
+    </table>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</body>
+</html>

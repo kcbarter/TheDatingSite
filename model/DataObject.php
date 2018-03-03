@@ -6,7 +6,7 @@
         lname varchar (20),
         age int (3),
         gender varchar (10),
-        phone int (10),
+        phone varchar (10),
         email varchar (30),
         state varchar (30),
         seeking varchar (10),
@@ -19,15 +19,13 @@
 
     require_once "/home/kbarterg/config.php";
 
-    abstract class DataObject {
+    class DataObject {
 
         protected $data = array();
 
-        public function __construct($data)
+        public function __construct()
         {
-            foreach ($data as $key => $value) {
-                if (array_key_exists($key, $this->data)) $this->data[$key] = $value;
-            }
+
         }
 
         public function getValue($field){

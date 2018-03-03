@@ -87,7 +87,15 @@ if(strcmp($page,'personal')==0)
 {
     if(!validFirstName($FirstName))
     {
-        $errors['FirstName'] = "Please enter a valid name!";
+        if(empty($FirstName))
+        {
+            $errors['FirstName'] = "Please enter a name";
+        }
+        else
+        {
+            $errors['FirstName'] = "Please enter a valid name!";
+        }
+
     }
 
     if(!validLastName($LastName))
@@ -99,7 +107,7 @@ if(strcmp($page,'personal')==0)
     {
         if(!empty($Age) && $Age < 18)
         {
-            $errors['Age'] = "Your not old enough to be on this site!";
+            $errors['Age'] = "You're not old enough to be on this site!";
         }
         elseif (empty($Age))
         {

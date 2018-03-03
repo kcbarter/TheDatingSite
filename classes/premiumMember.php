@@ -53,7 +53,8 @@
 
         public static function getPreMembers()
         {
-            $conn = parent::connect();
+            $dataObject = new DataObject();
+            $conn = $dataObject->connect();
 
             //define query
             $sql = "SELECT * FROM LCDating ORDER  BY lname, fname, member_id";
@@ -77,14 +78,16 @@
         function addPreMember($fname, $lname, $age, $gender, $phone, $email, $state,
                            $seeking, $bio, $_inDoorInterests, $_outDoorInterest)
         {
-            global $dbh;
+            $dbh = parent::connect();
             $image = '';
-            $activities = $_inDoorInterests.', '. $_outDoorInterest.', ';
+            $activities = implode(", ", $_inDoorInterests).', '.implode(", ", $_outDoorInterest);
 
             //define query
             $sql = "INSERT INTO LCDating
+                  (fname, lname, age, gender, phone, email,
+                  state, seeking, bio, premium, image, interests)
                   VALUES (:fname, :lname, :age, :gender, :phone, :email,
-                  :state, :seeking, :bio, :image, :interests)";
+                  :state, :seeking, :bio, 0, :image, :interests)";
 
 
             //prepare statement
